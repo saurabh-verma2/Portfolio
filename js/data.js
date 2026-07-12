@@ -1,16 +1,15 @@
 
-const RESUME_PREVIEW_URL = 'https://drive.google.com/file/d/14qVyx-U4hDb7M6SMxpXBofro9XklfXug/preview';
-const GITHUB_URL = 'https://github.com/saurabhDev02';
+const RESUME_PREVIEW_URL = APP_CONFIG.links.resume;
+const GITHUB_URL = APP_CONFIG.links.github;
+const LINKEDIN_URL = APP_CONFIG.links.linkedin;
+const INSTAGRAM_URL = APP_CONFIG.links.instagram;
+const WHATSAPP_URL = APP_CONFIG.links.whatsapp;
+const MAPS_URL = APP_CONFIG.links.maps;
 
-const LINKEDIN_URL = 'https://www.linkedin.com/in/saurabh-kumar-verma-902062320';
-const INSTAGRAM_URL = 'https://www.instagram.com/ig.saurabh_07';
-const WHATSAPP_URL = 'https://wa.me/919569581015';
-const MAPS_URL = 'https://maps.app.goo.gl/2jbQFbkAmeMjU1u47';
-
-const EMAILJS_SERVICE_ID = 'service_ttgxlpf';
-const EMAILJS_TEMPLATE_ID = 'template_d5zf5eb';
-const EMAILJS_USER_ID = 'NC1h7ysvR9iBEC6hI';
-const OWNER_EMAIL = 'saurabhkumarverma0002@gmail.com';
+const EMAILJS_SERVICE_ID = APP_CONFIG.email.serviceId;
+const EMAILJS_TEMPLATE_ID = APP_CONFIG.email.templateId;
+const EMAILJS_USER_ID = APP_CONFIG.email.userId;
+const OWNER_EMAIL = APP_CONFIG.email.owner;
 
 const TAGLINES = [
   "I'm an Android Developer",
@@ -97,7 +96,7 @@ const SKILL_CATEGORIES = [
   {
     name: "Android",
     icon: "fab fa-android",
-    color: "#2e7d32",
+    color: COLORS.android,
     skills: [
       { name: "Kotlin", icon: "fa fa-code", color: "#7b1fa2", level: 90 },
       { name: "Jetpack Compose", icon: "fa fa-mobile-alt", color: "#2e7d32", level: 88 },
@@ -108,7 +107,7 @@ const SKILL_CATEGORIES = [
   {
     name: "Mobile (Cross-Platform)",
     icon: "fa-mobile-alt",
-    color: "#1976d2",
+    color: COLORS.blue,
     skills: [
       { name: "Flutter", icon: "fa fa-mobile-alt", color: "#1976d2", level: 85 },
       { name: "Dart", icon: "fa fa-code", color: "#7b1fa2", level: 80 },
@@ -118,7 +117,7 @@ const SKILL_CATEGORIES = [
   {
     name: "Backend",
     icon: "fa-server",
-    color: "#e65100",
+    color: COLORS.orange,
     skills: [
       { name: "Firebase", icon: "fa fa-fire", color: "#e65100", level: 85 },
       { name: "REST APIs", icon: "fa fa-plug", color: "#0288d1", level: 80 },
@@ -150,7 +149,7 @@ const SKILL_CATEGORIES = [
   {
     name: "Architecture",
     icon: "fa-layer-group",
-    color: "#7b1fa2",
+    color: COLORS.purple,
     skills: [
       { name: "MVVM", icon: "fa fa-sitemap", color: "#7b1fa2", level: 90 },
       { name: "Clean Architecture", icon: "fa fa-layer-group", color: "#5e35b1", level: 82 },

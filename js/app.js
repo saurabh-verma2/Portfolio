@@ -412,6 +412,9 @@ function initContactForm() {
 }
 
 document.addEventListener('DOMContentLoaded', () => {
+  const profileImage = document.getElementById('profile-image');
+  if (profileImage) profileImage.src = ASSETS.images.profile;
+
   Theme.init();
   initCursor();
   document.addEventListener('keydown', e => {
