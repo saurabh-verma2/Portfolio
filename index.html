@@ -1,0 +1,359 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="light">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>PORTFOLIO — Saurabh Kumar Verma</title>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700;900&family=Dancing+Script:wght@400;500;600;700&family=Inter:wght@300;400;500;600&display=swap"
+        rel="stylesheet" />
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" rel="stylesheet" />
+    <link rel="stylesheet" href="style.css" />
+</head>
+
+<body>
+
+    <div id="scroll-progress"></div>
+    <!-- Custom cursor -->
+    <div id="cursor-dot"></div>
+
+    <!-- ═══════════ NAVBAR ═══════════ -->
+    <nav id="navbar">
+        <div class="nav-logo">PORT<span>FOLIO</span></div>
+        <div class="nav-links">
+            <button class="nav-btn active" onclick="scrollToSection('about')" data-section="about"><i
+                    class="fa fa-user"></i> About</button>
+            <button class="nav-btn" onclick="scrollToSection('skills')" data-section="skills"><i class="fa fa-code"></i>
+                Skills</button>
+            <button class="nav-btn" onclick="scrollToSection('projects')" data-section="projects"><i
+                    class="fa fa-briefcase"></i> Projects</button>
+            <button class="nav-btn" onclick="scrollToSection('experience')" data-section="experience"><i
+                    class="fa fa-graduation-cap"></i> Experience</button>
+            <button class="nav-btn" onclick="scrollToSection('contact')" data-section="contact"><i
+                    class="fa fa-envelope"></i> Contact</button>
+        </div>
+        <div class="nav-right">
+            <button id="theme-toggle" onclick="toggleTheme(this)" title="Toggle theme"><i class="fa fa-moon"
+                    id="theme-icon"></i></button>
+        </div>
+
+        <div id="hamburger-wrap">
+            <button id="hamburger" onclick="toggleMenu()" aria-label="Menu">
+                <span class="bar bar-1"></span>
+                <span class="bar bar-2"></span>
+                <span class="bar bar-3"></span>
+            </button>
+            <div id="mobile-menu">
+                <button class="mobile-nav-btn" onclick="scrollToSection('about');toggleMenu()" data-section="about"><i
+                        class="fa fa-user"></i> About</button>
+                <button class="mobile-nav-btn" onclick="scrollToSection('skills');toggleMenu()" data-section="skills"><i
+                        class="fa fa-code"></i> Skills</button>
+                <button class="mobile-nav-btn" onclick="scrollToSection('projects');toggleMenu()"
+                    data-section="projects"><i class="fa fa-briefcase"></i> Projects</button>
+                <button class="mobile-nav-btn" onclick="scrollToSection('experience');toggleMenu()"
+                    data-section="experience"><i class="fa fa-graduation-cap"></i> Experience</button>
+                <button class="mobile-nav-btn" onclick="scrollToSection('contact');toggleMenu()"
+                    data-section="contact"><i class="fa fa-envelope"></i> Contact</button>
+                <button class="mobile-nav-btn" id="theme-toggle-mobile" onclick="toggleTheme(this)"><i
+                        class="fa fa-moon" id="theme-icon-mobile"></i> <span id="theme-label-mobile">Go
+                        Dark</span></button>
+            </div>
+        </div>
+    </nav>
+
+    <!-- ═══════════ ABOUT ═══════════ -->
+
+    <section id="about">
+        <div class="section-inner">
+            <div class="about-hero fade-in">
+                <div class="about-hero-text">
+                    <p class="name-greeting">Hello, World! <span class="wave">👋</span></p>
+                    <h1 class="about-name">Saurabh Kumar Verma</h1>
+                    <div class="typewriter-wrap"><span id="typewriter"></span><span class="cursor"></span></div>
+                    <p class="about-desc">
+                        I build <strong>native Android apps</strong> with Kotlin & Jetpack Compose,
+                        and cross-platform experiences with Flutter — turning ideas into fast,
+                        reliable products that people actually enjoy using.
+                    </p>
+                    <div class="about-hero-btns">
+                        <button class="btn-primary" onclick="scrollToSection('contact')">
+                            <i class="fa fa-paper-plane"></i> Hire Me
+                        </button>
+                        <button class="hover-card-btn" onclick="window.open(RESUME_PREVIEW_URL,'_blank')">
+                            <i class="fa fa-file-arrow-down"></i> View Resume
+                        </button>
+                    </div>
+                    <div class="social-row">
+                        <a class="social-icon-btn" href="https://github.com/saurabhDev02" target="_blank"
+                            title="GitHub"><i class="fab fa-github"></i></a>
+                        <a class="social-icon-btn" href="https://www.linkedin.com/in/saurabh-kumar-verma-902062320"
+                            target="_blank" title="LinkedIn"><i class="fab fa-linkedin"></i></a>
+                        <a class="social-icon-btn" href="https://www.instagram.com/ig.saurabh_07" target="_blank"
+                            title="Instagram"><i class="fab fa-instagram"></i></a>
+                        <a class="social-icon-btn" href="https://wa.me/919569581015" target="_blank" title="WhatsApp"><i
+                                class="fab fa-whatsapp"></i></a>
+                    </div>
+                </div>
+                <div class="profile-img-wrap">
+                    <span class="float-emoji" style="--x:-40px;--delay:0s">🚀</span>
+                    <span class="float-emoji" style="--x:20px;--delay:0.1s">💡</span>
+                    <span class="float-emoji" style="--x:50px;--delay:0.2s">⚡</span>
+                    <span class="float-emoji" style="--x:-10px;--delay:0.3s">🎯</span>
+                    <div class="profile-img-ring"></div>
+                    <div class="profile-img-ring ring-2"></div>
+                    <img src="assets/images/myImage.png" alt="Saurabh Kumar Verma" class="profile-img" />
+
+                    <div class="badge-orbit orbit-1">
+                        <div class="orbit-badge badge-0" title="Kotlin">
+                            <i class="fa fa-code" style="color:#7b1fa2"></i>
+                        </div>
+                        <div class="orbit-badge badge-1" title="Firebase">
+                            <i class="fa fa-fire" style="color:#e65100"></i>
+                        </div>
+                        <div class="orbit-badge badge-2" title="Jetpack Compose">
+                            <i class="fa fa-mobile-alt" style="color:#2e7d32"></i>
+                        </div>
+                        <div class="orbit-badge badge-3" title="Git">
+                            <i class="fab fa-git-alt" style="color:#e64a19"></i>
+                        </div>
+                    </div>
+
+                    <!-- badges rotate on ring-2 -->
+                    <div class="badge-orbit orbit-2">
+                        <div class="orbit-badge badge-0" title="Android">
+                            <i class="fab fa-android" style="color:#2e7d32"></i>
+                        </div>
+                        <div class="orbit-badge badge-1" title="GitHub">
+                            <i class="fab fa-github" style="color:var(--text)"></i>
+                        </div>
+                        <div class="orbit-badge badge-2" title="Java">
+                            <i class="fab fa-java" style="color:#c62828"></i>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="fade-in" style="text-align:center;margin-bottom:8px;">
+                <span class="section-title"><span class="accent">About</span> <span class="normal">Me</span></span>
+            </div>
+            <div class="fade-in tag-row" id="about-tags" style="justify-content:center;">
+                <!-- filled by JS from ABOUT_TAGS in data.js -->
+            </div>
+
+            <div class="info-grid" id="info-grid">
+                <!-- filled by JS from INFO_CARDS in data.js -->
+            </div>
+        </div>
+    </section>
+
+
+    <div class="section-divider"></div>
+
+    <!-- ═══════════ STATS ═══════════ -->
+    <section id="stats">
+        <div class="section-inner">
+            <div class="stats-grid" id="stats-grid">
+                <!-- filled by JS -->
+            </div>
+        </div>
+    </section>
+
+    <div class="section-divider"></div>
+
+    <!-- ═══════════ SKILLS ═══════════ -->
+    <section id="skills">
+        <div class="section-inner">
+            <div class="section-title fade-in"><span class="normal">My </span><span class="accent">Skills</span></div>
+
+            <!-- Mobile horizontal tabs -->
+            <div class="skills-tabs-horizontal" id="skill-tabs-h">
+                <!-- filled by JS -->
+            </div>
+
+            <div class="skills-layout">
+                <!-- Vertical tabs desktop -->
+                <div class="skills-tabs-vertical" id="skill-tabs-v">
+                    <!-- filled by JS -->
+                </div>
+                <div class="skills-content">
+                    <div class="skills-grid fade-in" id="skills-grid">
+                        <!-- filled by JS -->
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <div class="section-divider"></div>
+
+    <!-- ═══════════ PROJECTS ═══════════ -->
+    <section id="projects">
+        <div class="section-inner">
+            <div class="section-title fade-in"><span class="normal">My </span><span class="accent">Projects</span></div>
+            <div class="projects-grid" id="projects-grid">
+                <!-- filled by JS -->
+            </div>
+        </div>
+    </section>
+
+    <div class="section-divider"></div>
+
+    <!-- ═══════════ EXPERIENCE ═══════════ -->
+    <section id="experience">
+        <div class="section-inner">
+            <div class="section-title fade-in">
+                <span class="normal">Experience </span><span class="accent">&</span><span class="normal">
+                    Education</span>
+            </div>
+            <!-- Desktop grid -->
+            <div class="exp-grid" id="exp-grid">
+                <!-- filled by JS -->
+            </div>
+            <!-- Mobile timeline -->
+            <div class="exp-timeline" id="exp-timeline">
+                <!-- filled by JS -->
+            </div>
+        </div>
+    </section>
+
+    <div class="section-divider"></div>
+
+    <!-- ═══════════ CONTACT ═══════════ -->
+    <section id="contact">
+        <div class="section-inner">
+            <div class="section-title fade-in"><span class="normal">Get </span><span class="accent">In Touch</span>
+            </div>
+            <div class="contact-layout">
+                <div class="contact-info-card fade-in">
+                    <h3>Contact Information</h3>
+                    <a class="contact-row" href="mailto:saurabhkumarverma0002@gmail.com">
+                        <div class="contact-icon"><i class="fa fa-envelope"></i></div>
+                        <div>
+                            <div class="contact-text-label">Email</div>
+                            <div class="contact-text-val">saurabhkumarverma0002@gmail.com</div>
+                        </div>
+                    </a>
+                    <a class="contact-row" href="tel:+919569581015">
+                        <div class="contact-icon"><i class="fa fa-phone"></i></div>
+                        <div>
+                            <div class="contact-text-label">Phone</div>
+                            <div class="contact-text-val">+91 9569581015</div>
+                        </div>
+                    </a>
+                    <a class="contact-row" href="https://maps.app.goo.gl/2jbQFbkAmeMjU1u47" target="_blank">
+                        <div class="contact-icon"><i class="fa fa-map-marker-alt"></i></div>
+                        <div>
+                            <div class="contact-text-label">Location</div>
+                            <div class="contact-text-val">Lucknow, Uttar Pradesh</div>
+                        </div>
+                    </a>
+                    <div class="contact-row">
+                        <div class="contact-icon"><i class="fa fa-clock"></i></div>
+                        <div>
+                            <div class="contact-text-label">Current Position</div>
+                            <div class="contact-text-val">Android Developer @ IPH Technologies</div>
+                        </div>
+                    </div>
+                    <a class="contact-row" id="resume-link" target="_blank">
+                        <div class="contact-icon"><i class="fa fa-download"></i></div>
+                        <div>
+                            <div class="contact-text-label">Resume</div>
+                            <div class="contact-text-val">View my CV</div>
+                        </div>
+                    </a>
+
+                    <div class="social-row" style="margin-top:16px;">
+                        <a class="social-icon-btn" href="https://github.com/saurabhDev02" target="_blank"
+                            title="GitHub"><i class="fab fa-github"></i></a>
+                        <a class="social-icon-btn" href="https://www.linkedin.com/in/saurabh-kumar-verma-902062320"
+                            target="_blank" title="LinkedIn"><i class="fab fa-linkedin"></i></a>
+                        <a class="social-icon-btn" href="https://www.instagram.com/ig.saurabh_07" target="_blank"
+                            title="Instagram"><i class="fab fa-instagram"></i></a>
+                        <a class="social-icon-btn" href="https://wa.me/919569581015" target="_blank" title="WhatsApp"><i
+                                class="fab fa-whatsapp"></i></a>
+                    </div>
+                </div>
+
+                <div class="contact-form-card fade-in">
+                    <h3>Send a Message</h3>
+                    <form id="contact-form" novalidate>
+                        <div class="form-group">
+                            <label for="f-name">Your Name</label>
+                            <input class="form-input" id="f-name" type="text" placeholder="Saurabh Kumar" required />
+                            <div class="form-error" id="err-name">Please enter your name</div>
+                        </div>
+                        <div class="form-group">
+                            <label for="f-email">Your Email</label>
+                            <input class="form-input" id="f-email" type="email" placeholder="you@email.com" required />
+                            <div class="form-error" id="err-email">Please enter a valid email</div>
+                        </div>
+                        <div class="form-group">
+                            <label for="f-msg">Message</label>
+                            <textarea class="form-input" id="f-msg" placeholder="Write your message here..."
+                                required></textarea>
+                            <div class="form-error" id="err-msg">Please enter a message</div>
+                        </div>
+                        <button type="submit" class="send-btn" id="send-btn">
+                            <div class="spinner"></div>
+                            <span id="send-label"><i class="fa fa-paper-plane"></i> Send Message</span>
+                        </button>
+                        <div id="msg-status"></div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ═══════════ FOOTER ═══════════ -->
+    <footer>
+        Copyright © | Designed and developed with ❤️ by <strong>Saurabh Kumar Verma</strong>
+    </footer>
+
+    <!-- Scroll to top -->
+    <button id="scroll-top" title="Back to top"><i class="fa fa-arrow-up"></i></button>
+
+    <!-- Toast -->
+    <div class="toast" id="toast"></div>
+
+    <!-- Project Modal -->
+    <div id="project-modal-overlay" onclick="closeProjectModal()">
+        <div id="project-modal" onclick="event.stopPropagation()">
+            <button id="modal-close" onclick="closeProjectModal()">
+                <i class="fa fa-times"></i>
+            </button>
+
+            <div id="modal-banner">
+                <i id="modal-icon" class="fa"></i>
+                <span id="modal-label-badge"></span>
+            </div>
+
+            <div id="modal-body">
+                <div id="modal-header">
+                    <h2 id="modal-title"></h2>
+                    <a id="modal-github" href="#" target="_blank">
+                        <i class="fab fa-github"></i> View on GitHub
+                    </a>
+                </div>
+
+                <p id="modal-details"></p>
+
+                <div id="modal-features-wrap">
+                    <h4><i class="fa fa-list-check"></i> Key Features</h4>
+                    <ul id="modal-features"></ul>
+                </div>
+
+                <div id="modal-techs-wrap">
+                    <h4><i class="fa fa-layer-group"></i> Tech Stack</h4>
+                    <div id="modal-techs"></div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="js/data.js"></script>
+    <script src="js/theme.js"></script>
+    <script src="js/app.js"></script>
+</body>
+
+</html>
