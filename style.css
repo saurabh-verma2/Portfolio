@@ -35,6 +35,8 @@
 
 html {
   scroll-behavior: smooth;
+  max-width: 100%;
+  overflow-x: hidden;
 }
 
 body {
@@ -43,6 +45,7 @@ body {
   color: var(--text);
   transition: background 0.3s, color 0.3s;
   min-height: 100vh;
+  max-width: 100%;
   overflow-x: hidden;
 }
 
@@ -911,6 +914,12 @@ section {
   }
 }
 
+@keyframes counterSpinRing {
+  to {
+    transform: rotate(-360deg);
+  }
+}
+
 .profile-img {
   width: 260px;
   height: 260px;
@@ -1016,6 +1025,15 @@ section {
   border-color: var(--primary);
 }
 
+/* Keep badge icons upright while their orbit rotates. */
+.orbit-1 .orbit-badge i {
+  animation: counterSpinRing 10s linear infinite;
+}
+
+.orbit-2 .orbit-badge i {
+  animation: spinRing 16s linear infinite;
+}
+
 .orbit-2 .badge-0 {
   transform:
     rotate(0deg)
@@ -1095,6 +1113,42 @@ section {
 @media (max-width: 600px) {
   .about-hero-img {
     display: none;
+  }
+
+  .profile-img-wrap {
+    display: flex;
+    width: clamp(160px, 46vw, 180px);
+    height: clamp(160px, 46vw, 180px);
+    aspect-ratio: auto;
+    margin-right: 0;
+    margin-bottom: 64px;
+  }
+
+  .profile-img {
+    width: calc(100% - 10px);
+    height: calc(100% - 10px);
+  }
+
+  .profile-img-ring {
+    inset: -14px;
+  }
+
+  .profile-img-ring.ring-2 {
+    inset: -40px;
+  }
+
+  .orbit-1 {
+    --orbit-radius: min(28.5vw, 108px);
+  }
+
+  .orbit-2 {
+    --orbit-radius: min(38vw, 142px);
+  }
+
+  .orbit-1,
+  .orbit-2 {
+    --badge-size: 28px;
+    --badge-font-size: 0.78rem;
   }
 }
 
@@ -1843,6 +1897,7 @@ section {
 @media (max-width: 600px) {
   .project-card {
     width: 100%;
+    min-width: 0;
   }
 }
 
