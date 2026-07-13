@@ -1,0 +1,64 @@
+:root {
+  /* Accent */
+  --accent-light: #ff40ef;
+  --accent-dark: #ff0000;
+
+  /* Backgrounds */
+  --bg-light: #e0e0e0;
+  --bg-dark: #2a2a2a;
+
+  /* Cards */
+  --card-light: #e0e0e0;
+  --card-dark: #212121;
+  --card-rgb: 224, 224, 224;
+
+  /* Surfaces */
+  --surface-light: #ffffff;
+  --surface-dark: #1e1e1e;
+
+  /* Text */
+  --text-light: #111111;
+  --text-dark: #f0f0f0;
+  --muted-light: #555555;
+  --muted-dark: #aaaaaa;
+
+  /* Brand colors */
+  --primary-light: #1565c0;
+  --primary-dark: #90caf9;
+  --secondary-light: #1976d2;
+  --secondary-dark: #64b5f6;
+
+  /* Neumorphic shadows */
+  --shadow-light-outer: rgba(0, 0, 0, 0.22) 4px 4px 6px,
+    rgba(255, 255, 255, 0.75) -4px -4px 6px;
+  --shadow-dark-outer: rgba(0, 0, 0, 0.5) 4px 4px 8px,
+    rgba(55, 70, 80, 0.35) -4px -4px 8px;
+}
+
+[data-theme="light"] {
+  --bg: var(--bg-light);
+  --card: var(--card-light);
+  --surface: var(--surface-light);
+  --text: var(--text-light);
+  --muted: var(--muted-light);
+  --accent: var(--accent-light);
+  --primary: var(--primary-light);
+  --secondary: var(--secondary-light);
+  --shadow-nm: var(--shadow-light-outer);
+  --card-elevation: rgba(0, 0, 0, 0.15) 0 4px 12px;
+  --hover-glow: rgba(255, 64, 239, 0.3);
+}
+
+[data-theme="dark"] {
+  --bg: var(--bg-dark);
+  --card: var(--card-dark);
+  --surface: var(--surface-dark);
+  --text: var(--text-dark);
+  --muted: var(--muted-dark);
+  --accent: var(--accent-dark);
+  --primary: var(--primary-dark);
+  --secondary: var(--secondary-dark);
+  --shadow-nm: var(--shadow-dark-outer);
+  --card-elevation: rgba(0, 0, 0, 0.4) 0 4px 16px;
+  --hover-glow: rgba(255, 0, 0, 0.3);
+}

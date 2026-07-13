@@ -4,40 +4,10 @@
 
 /* ─── Design tokens ─── */
 :root {
-  /* Accent */
-  --accent-light: #ff40ef;
-  --accent-dark: #ff0000;
-  /* Backgrounds */
-  --bg-light: #e0e0e0;
-  --bg-dark: #2a2a2a;
-  /* Cards (neumorphic base) */
-  --card-light: #e0e0e0;
-  --card-dark: #212121;
-  --card-rgb: 224, 224, 224;
-  /* Surface (inside cards) */
-  --surface-light: #ffffff;
-  --surface-dark: #1e1e1e;
-  /* Text */
-  --text-light: #111111;
-  --text-dark: #f0f0f0;
-  --muted-light: #555555;
-  --muted-dark: #aaaaaa;
-  /* Primary blue */
-  --primary-light: #1565c0;
-  --primary-dark: #90caf9;
-  --secondary-light: #1976d2;
-  --secondary-dark: #64b5f6;
-  /* Neumorphic shadows */
-  --shadow-light-outer: rgba(0, 0, 0, 0.22) 4px 4px 6px,
-    rgba(255, 255, 255, 0.75) -4px -4px 6px;
-  --shadow-dark-outer: rgba(0, 0, 0, 0.5) 4px 4px 8px,
-    rgba(55, 70, 80, 0.35) -4px -4px 8px;
-  /* Shared */
   --radius: 12px;
   --radius-sm: 6px;
   --radius-lg: 16px;
   --transition: 0.2s ease;
-  /* Spacing system */
   --space-xs:  8px;
   --space-sm:  16px;
   --space-md:  24px;
@@ -47,44 +17,10 @@
   --max-w: 1200px;
 }
 
-[data-theme="light"] {
-  --bg: var(--bg-light);
-  --card: var(--card-light);
-  --surface: var(--surface-light);
-  --text: var(--text-light);
-  --muted: var(--muted-light);
-  --accent: var(--accent-light);
-  --primary: var(--primary-light);
-  --secondary: var(--secondary-light);
-  --shadow-nm: var(--shadow-light-outer);
-  --card-elevation: rgba(0, 0, 0, 0.15) 0 4px 12px;
-  --hover-glow: rgba(255, 64, 239, 0.3);
-}
-
-[data-theme="dark"] {
-  --bg: var(--bg-dark);
-  --card: var(--card-dark);
-  --surface: var(--surface-dark);
-  --text: var(--text-dark);
-  --muted: var(--muted-dark);
-  --accent: var(--accent-dark);
-  --primary: var(--primary-dark);
-  --secondary: var(--secondary-dark);
-  --shadow-nm: var(--shadow-dark-outer);
-  --card-elevation: rgba(0, 0, 0, 0.4) 0 4px 16px;
-  --hover-glow: rgba(255, 0, 0, 0.3);
-}
-
 @media (max-width: 1280px) { :root { --gutter: 48px; } }
 @media (max-width: 1024px) { :root { --gutter: 32px; } }
 @media (max-width: 768px)  { :root { --gutter: 20px; } }
 @media (max-width: 480px)  { :root { --gutter: 16px; } }
-
-  /* Page gutter — scales with screen */
-
-  /* Max content width */
-
-/* ─── Theme-level mapped tokens ─── */
 
 /* ════════════════════════════════
    RESET & BASE
@@ -530,7 +466,6 @@ body.cursor-hover #cursor-dot {
   border-color: rgba(255, 255, 255, 0.08);
 }
 
-/* ─── Menu items ─── */
 .mobile-nav-btn {
   display: flex;
   align-items: center;
@@ -562,7 +497,6 @@ body.cursor-hover #cursor-dot {
   transform: translateX(0);
 }
 
-/* accent left bar */
 .mobile-nav-btn::before {
   content: '';
   position: absolute;
@@ -637,7 +571,6 @@ body.cursor-hover #cursor-dot {
   color: #ce93d8;
 }
 
-/* ─── Responsive ─── */
 @media (max-width: 770px) {
   .nav-links {
     display: none;
@@ -756,7 +689,6 @@ section {
   overflow: hidden;
 }
 
-/* Subtle shimmer bar at top */
 .stat-card::before {
   content: '';
   position: absolute;
@@ -782,7 +714,6 @@ section {
     0 8px 24px color-mix(in srgb, var(--stat-color) 25%, transparent);
 }
 
-/* Icon circle */
 .stat-icon-wrap {
   width: 52px;
   height: 52px;
@@ -803,7 +734,6 @@ section {
   font-size: 1.3rem;
 }
 
-/* Number */
 .stat-value-row {
   display: flex;
   align-items: baseline;
@@ -831,7 +761,6 @@ section {
   color: var(--stat-color, var(--accent));
 }
 
-/* Label */
 .stat-label {
   font-size: 0.72rem;
   font-weight: 600;
@@ -841,7 +770,6 @@ section {
   letter-spacing: 0.02em;
 }
 
-/* Responsive */
 @media (max-width: 1024px) {
   .stats-grid {
     grid-template-columns: repeat(3, 1fr);
@@ -882,7 +810,6 @@ section {
   pointer-events: none;
 }
 
-/* Glowing tip at the right edge */
 #scroll-progress::after {
   content: '';
   position: absolute;
@@ -899,12 +826,10 @@ section {
   transition: opacity 0.3s ease;
 }
 
-/* Show the glow tip only when page is actually scrolling */
 #scroll-progress.scrolling::after {
   opacity: 1;
 }
 
-/* Hide completely when at top */
 #scroll-progress.at-top {
   opacity: 0;
   transition: opacity 0.4s ease, width 0.1s linear;
@@ -951,7 +876,6 @@ section {
   }
 }
 
-/* ─── Profile image wrapper ─── */
 .profile-img-wrap {
   position: relative;
   width: 270px;
@@ -964,7 +888,6 @@ section {
   margin-right: var(--space-lg);
 }
 
-/* ─── Spinning dashed rings ─── */
 .profile-img-ring {
   position: absolute;
   inset: -18px;
@@ -976,7 +899,7 @@ section {
 }
 
 .profile-img-ring.ring-2 {
-  inset: -36px;
+  inset: -50px;
   border: 1.5px dashed var(--primary);
   opacity: 0.28;
   animation: spinRing 16s linear infinite reverse;
@@ -988,7 +911,6 @@ section {
   }
 }
 
-/* ─── Profile photo ─── */
 .profile-img {
   width: 260px;
   height: 260px;
@@ -1013,41 +935,38 @@ section {
     0 0 90px var(--hover-glow);
 }
 
-/* ─── Badge orbit containers ─── */
 .badge-orbit {
   position: absolute;
   top: 50%;
   left: 50%;
+  width: calc(var(--orbit-radius) * 2);
+  height: calc(var(--orbit-radius) * 2);
+  margin-top: calc(var(--orbit-radius) * -1);
+  margin-left: calc(var(--orbit-radius) * -1);
   border-radius: 50%;
   pointer-events: none;
 }
 
 .orbit-1 {
-  width: 296px;
-  height: 296px;
-  margin-top: -148px;
-  margin-left: -148px;
+  --orbit-radius: 148px;
   animation: spinRing 10s linear infinite;
 }
 
 .orbit-2 {
-  width: 332px;
-  height: 332px;
-  margin-top: -166px;
-  margin-left: -166px;
+  --orbit-radius: 230px;
   animation: spinRing 16s linear infinite reverse;
 }
 
 
-/* ─── Individual badges ─── */
+  /* Individual badges */
 .orbit-badge {
   position: absolute;
   top: 50%;
   left: 50%;
-  width: 36px;
-  height: 36px;
-  margin-top: -18px;
-  margin-left: -18px;
+  width: var(--badge-size, 36px);
+  height: var(--badge-size, 36px);
+  margin-top: calc(var(--badge-size, 36px) / -2);
+  margin-left: calc(var(--badge-size, 36px) / -2);
   border-radius: 50%;
   background: var(--card);
   box-shadow: var(--shadow-nm);
@@ -1055,71 +974,77 @@ section {
   display: flex;
   align-items: center;
   justify-content: center;
-  font-size: 1rem;
+  font-size: var(--badge-font-size, 1rem);
   pointer-events: all;
   cursor: default;
 }
 
-/* orbit-1 badges: placed at 0°, 90°, 180°, 270° on radius 148px */
 .orbit-1 .badge-0 {
-  transform: rotate(0deg) translateY(-148px) rotate(0deg);
+  transform:
+    rotate(0deg)
+    translateY(calc(var(--orbit-radius) * -1))
+    rotate(0deg);
 }
 
 .orbit-1 .badge-1 {
-  transform: rotate(90deg) translateY(-148px) rotate(-90deg);
+  transform:
+    rotate(90deg)
+    translateY(calc(var(--orbit-radius) * -1))
+    rotate(-90deg);
 }
 
 .orbit-1 .badge-2 {
-  transform: rotate(180deg) translateY(-148px) rotate(-180deg);
+  transform:
+    rotate(180deg)
+    translateY(calc(var(--orbit-radius) * -1))
+    rotate(-180deg);
 }
 
 .orbit-1 .badge-3 {
-  transform: rotate(270deg) translateY(-148px) rotate(-270deg);
+  transform:
+    rotate(270deg)
+    translateY(calc(var(--orbit-radius) * -1))
+    rotate(-270deg);
 }
 
-/* orbit-2 badges: placed at 0°, 120°, 240° on radius 166px */
+.orbit-2 {
+  --badge-size: 36px;
+  --badge-font-size: 1rem;
+}
+
 .orbit-2 .orbit-badge {
-  width: 32px;
-  height: 32px;
-  margin-top: -16px;
-  margin-left: -16px;
   border-color: var(--primary);
-  font-size: 0.88rem;
 }
 
 .orbit-2 .badge-0 {
-  transform: rotate(0deg) translateY(-166px) rotate(0deg);
+  transform:
+    rotate(0deg)
+    translateY(calc(var(--orbit-radius) * -1))
+    rotate(0deg);
 }
 
 .orbit-2 .badge-1 {
-  transform: rotate(120deg) translateY(-166px) rotate(-120deg);
+  transform:
+    rotate(120deg)
+    translateY(calc(var(--orbit-radius) * -1))
+    rotate(-120deg);
 }
 
 .orbit-2 .badge-2 {
-  transform: rotate(240deg) translateY(-166px) rotate(-240deg);
+  transform:
+    rotate(240deg)
+    translateY(calc(var(--orbit-radius) * -1))
+    rotate(-240deg);
 }
 
 @media (max-width: 1100px) {
   .orbit-1 {
-    width: 260px;
-    height: 260px;
-    margin-top: -130px;
-    margin-left: -130px;
+    --orbit-radius: 140px;
   }
-  .orbit-1 .badge-0 { transform: rotate(0deg)   translateY(-130px) rotate(0deg);   }
-  .orbit-1 .badge-1 { transform: rotate(90deg)  translateY(-130px) rotate(-90deg);  }
-  .orbit-1 .badge-2 { transform: rotate(180deg) translateY(-130px) rotate(-180deg); }
-  .orbit-1 .badge-3 { transform: rotate(270deg) translateY(-130px) rotate(-270deg); }
 
   .orbit-2 {
-    width: 296px;
-    height: 296px;
-    margin-top: -148px;
-    margin-left: -148px;
+    --orbit-radius: 175px;
   }
-  .orbit-2 .badge-0 { transform: rotate(0deg)   translateY(-148px) rotate(0deg);   }
-  .orbit-2 .badge-1 { transform: rotate(120deg) translateY(-148px) rotate(-120deg); }
-  .orbit-2 .badge-2 { transform: rotate(240deg) translateY(-148px) rotate(-240deg); }
 
   .profile-img-wrap {
     width: 240px;
@@ -1144,7 +1069,6 @@ section {
   }
 }
 
-/* ─── Tooltip on hover ─── */
 .orbit-badge::after {
   content: attr(title);
   position: absolute;
@@ -1400,7 +1324,6 @@ section {
   isolation: isolate;
 }
 
-/* Wave 1 — slightly transparent */
 .btn-primary::before,
 .hover-card-btn::before,
 .send-btn::before {
@@ -1409,7 +1332,6 @@ section {
   top: 130%;
 }
 
-/* Wave 2 — slightly delayed */
 .btn-primary::after,
 .hover-card-btn::after,
 .send-btn::after {
@@ -1419,7 +1341,6 @@ section {
   transition-delay: 0.04s;
 }
 
-/* On hover: waves rise up */
 .btn-primary:hover::before,
 .hover-card-btn:hover::before,
 .send-btn:hover::before {
@@ -1434,7 +1355,6 @@ section {
   animation: waterSpin 3s linear infinite;
 }
 
-/* All text/icons stay above the water */
 .btn-primary > *,
 .btn-primary i,
 .hover-card-btn > *,
@@ -1448,7 +1368,6 @@ section {
   z-index: 1;
 }
 
-/* ─── Social icons ─── */
 .social-row {
   display: flex;
   gap: 12px;
@@ -1556,7 +1475,6 @@ section {
 .tag-chip {
   padding: 5px 14px 5px 10px;
   border-radius: 99px;
-  /* ← was var(--radius), now full pill */
   background: var(--card);
   box-shadow: var(--shadow-nm);
   font-size: 0.78rem;
@@ -1599,7 +1517,6 @@ section {
   box-shadow: var(--shadow-nm), 0 0 14px var(--hover-glow);
 }
 
-/* Color each card individually using nth-child */
 .info-card:nth-child(1) {
   --card-color: #1565c0;
   border-top-color: var(--card-color);
@@ -2107,7 +2024,6 @@ section {
   transform: translateY(0) scale(1);
 }
 
-/* ─── Close button ─── */
 #modal-close {
   position: absolute;
   top: 14px;
@@ -2133,7 +2049,6 @@ section {
   transform: rotate(90deg);
 }
 
-/* ─── Banner ─── */
 #modal-banner {
   width: 100%;
   height: 160px;
@@ -2174,7 +2089,6 @@ section {
   letter-spacing: 0.04em;
 }
 
-/* ─── Body ─── */
 #modal-body {
   padding: 24px;
 }
@@ -2352,10 +2266,8 @@ section {
    EXPERIENCE
 ════════════════════════════════ */
 
-/* Hide the old grid on all sizes */
 .exp-grid { display: none !important; }
 
-/* ─── Desktop zigzag timeline ─── */
 .exp-timeline {
   display: flex;
   flex-direction: column;
@@ -2364,7 +2276,6 @@ section {
   padding: 0 0 20px;
 }
 
-/* Central vertical track line */
 .exp-timeline::before {
   content: '';
   position: absolute;
@@ -2392,17 +2303,14 @@ section {
   min-height: 0px;
 }
 
-/* Even items: card on RIGHT, dot center */
 .exp-timeline-item:nth-child(odd) {
   flex-direction: row;
 }
 
-/* Odd items: card on LEFT, dot center */
 .exp-timeline-item:nth-child(even) {
   flex-direction: row-reverse;
 }
 
-/* ─── Center dot column ─── */
 .exp-line-col {
   display: flex;
   flex-direction: column;
@@ -2412,7 +2320,6 @@ section {
   position: relative;
   z-index: 2;
   padding-top: 6px;
-  /* always centered */
   order: 2;
 }
 
@@ -2451,10 +2358,9 @@ section {
 .exp-dot.dot-work { --dot-glow: 21,101,192; }
 .exp-dot.dot-edu  { --dot-glow: 255,64,239; }
 
-/* hide old connector — not needed in zigzag */
 .exp-connector { display: none; }
 
-/* ─── Card (shared) ─── */
+/* ─── Card ─── */
 .exp-timeline-card {
   flex: 1;
   max-width: calc(50% - 50px);
@@ -2480,7 +2386,6 @@ section {
 }
 
 /* Card pointer arrows */
-/* Card on LEFT (even items, reversed row → card is on left) */
 .exp-timeline-item:nth-child(even) .exp-timeline-card::after {
   content: '';
   position: absolute;
@@ -2492,7 +2397,7 @@ section {
   border-left: 9px solid var(--card);
 }
 
-/* Card on RIGHT (odd items) */
+/* Card on RIGHT */
 .exp-timeline-item:nth-child(odd) .exp-timeline-card::after {
   content: '';
   position: absolute;
@@ -2504,7 +2409,6 @@ section {
   border-right: 9px solid var(--card);
 }
 
-/* Hover: slide away from center line */
 .exp-timeline-item:nth-child(odd)  .exp-timeline-card:hover { transform: translateX(-6px); }
 .exp-timeline-item:nth-child(even) .exp-timeline-card:hover { transform: translateX(6px); }
 
@@ -2618,7 +2522,6 @@ section {
 .exp-timeline-card[data-type="work"] .exp-points li::before { color: var(--primary); }
 .exp-timeline-card[data-type="edu"]  .exp-points li::before { color: var(--accent);  }
 
-/* ─── Collapsible points ─── */
 .exp-timeline-card .exp-points {
   max-height: 0;
   overflow: hidden;
@@ -2650,7 +2553,6 @@ section {
 .exp-timeline-card[data-type="work"] .exp-expand-btn { color: var(--primary); }
 .exp-timeline-card[data-type="edu"]  .exp-expand-btn { color: var(--accent);  }
 
-/* ─── Mobile: collapse to left timeline ─── */
 @media (max-width: 700px) {
   .exp-timeline::before {
     left: 22px;
@@ -2679,7 +2581,6 @@ section {
     margin-left: 14px;
   }
 
-  /* reset desktop arrows, apply mobile right-pointing arrow */
   .exp-timeline-item:nth-child(even) .exp-timeline-card::after,
   .exp-timeline-item:nth-child(odd)  .exp-timeline-card::after {
     left: -9px;
@@ -2690,7 +2591,6 @@ section {
     border-bottom: 8px solid transparent;
   }
 
-  /* reset slide directions */
   .exp-timeline-item:nth-child(odd)  .exp-timeline-card:hover,
   .exp-timeline-item:nth-child(even) .exp-timeline-card:hover {
     transform: translateX(3px);
