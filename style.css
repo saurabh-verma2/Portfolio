@@ -1121,7 +1121,7 @@ section {
     height: clamp(160px, 46vw, 180px);
     aspect-ratio: auto;
     margin-right: 0;
-    margin-bottom: 64px;
+    margin-bottom: clamp(48px, 17vw, 64px);
   }
 
   .profile-img {
@@ -1651,6 +1651,48 @@ section {
   }
 }
 
+@media (max-width: 600px) {
+  section {
+    padding: 40px 0;
+  }
+
+  .section-title {
+    margin-bottom: 24px;
+  }
+
+  .about-hero {
+    margin-bottom: 24px;
+  }
+
+  .about-section-heading .section-title {
+    margin-bottom: 12px;
+  }
+
+  .about-hero-btns {
+    width: 100%;
+    flex-wrap: nowrap;
+    gap: clamp(8px, 2.5vw, 12px);
+    margin-bottom: 18px;
+  }
+
+  .about-hero-btns .btn-primary,
+  .about-hero-btns .hover-card-btn {
+    flex: 1 1 0;
+    min-width: 0;
+    justify-content: center;
+    gap: clamp(5px, 1.5vw, 8px);
+    padding: clamp(9px, 2.8vw, 11px) clamp(8px, 3vw, 16px);
+    font-size: clamp(0.76rem, 3.4vw, 0.88rem);
+    white-space: nowrap;
+  }
+
+  .about-hero-text > .social-row {
+    width: 100%;
+    justify-content: center;
+  }
+
+}
+
 /* ════════════════════════════════
    SKILLS
 ════════════════════════════════ */
@@ -1845,6 +1887,8 @@ section {
 @media (max-width: 600px) {
   .skills-layout {
     flex-direction: column;
+    align-items: center;
+    width: 100%;
   }
 
   .skills-tabs-vertical {
@@ -1853,10 +1897,18 @@ section {
 
   .skills-tabs-horizontal {
     display: flex;
+    width: 100%;
+  }
+
+  .skills-content {
+    width: 100%;
+    max-width: 520px;
+    margin: 0 auto;
   }
 
   .skills-grid {
     grid-template-columns: 1fr;
+    width: 100%;
   }
 }
 
