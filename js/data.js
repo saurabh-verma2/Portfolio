@@ -6,11 +6,6 @@ const INSTAGRAM_URL = APP_CONFIG.links.instagram;
 const WHATSAPP_URL = APP_CONFIG.links.whatsapp;
 const MAPS_URL = APP_CONFIG.links.maps;
 
-const EMAILJS_SERVICE_ID = APP_CONFIG.email.serviceId;
-const EMAILJS_TEMPLATE_ID = APP_CONFIG.email.templateId;
-const EMAILJS_USER_ID = APP_CONFIG.email.userId;
-const OWNER_EMAIL = APP_CONFIG.email.owner;
-
 const TAGLINES = [
   "I'm an Android Developer",
   "I build native apps with Kotlin & Jetpack Compose",

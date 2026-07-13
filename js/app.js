@@ -350,7 +350,7 @@ function renderExperience() {
   });
 }
 
-//  CONTACT FORM  (EmailJS REST)
+//  CONTACT FORM
 function initContactForm() {
   const form = document.getElementById('contact-form');
   if (!form) return;
@@ -375,25 +375,13 @@ function initContactForm() {
     btn.classList.add('loading');
 
     try {
-      const now = new Date();
-      const formatted = `${now.getDate()}/${now.getMonth() + 1}/${now.getFullYear()} `
-        + `at ${now.getHours()}:${String(now.getMinutes()).padStart(2, '0')}`;
-
-      const res = await fetch('https://api.emailjs.com/api/v1.0/email/send', {
+      const res = await fetch('/api/contact', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({
-          service_id: EMAILJS_SERVICE_ID,
-          template_id: EMAILJS_TEMPLATE_ID,
-          user_id: EMAILJS_USER_ID,
-          template_params: {
-            from_name: name,
-            from_email: email,
-            message: msg,
-            date: formatted,
-            to_email: OWNER_EMAIL,
-            reply_to: email,
-          },
+          name,
+          email,
+          message: msg,
         }),
       });
 
