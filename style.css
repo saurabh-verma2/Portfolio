@@ -2679,6 +2679,14 @@ section {
   font-weight: 500;
 }
 
+.contact-info-card h3,
+.contact-form-card h3 {
+    font-size: 1.1rem;
+    font-weight: 700;
+    margin-bottom: 20px;
+    text-align: center;
+}
+
 /* ─── Form ─── */
 .form-group {
   margin-bottom: 16px;
