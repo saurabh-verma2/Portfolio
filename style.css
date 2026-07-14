@@ -880,9 +880,12 @@ section {
 }
 
 .profile-img-wrap {
+  --profile-radius: 135px;
+  --ring-1-offset: 18px;
+  --ring-2-offset: 50px;
   position: relative;
-  width: 270px;
-  height: 270px;
+  width: calc(var(--profile-radius) + var(--profile-radius));
+  height: calc(var(--profile-radius) + var(--profile-radius));
   display: flex;
   align-items: center;
   justify-content: center;
@@ -893,7 +896,7 @@ section {
 
 .profile-img-ring {
   position: absolute;
-  inset: -18px;
+  inset: calc(var(--ring-1-offset) * -1);
   border-radius: 50%;
   border: 2px dashed var(--accent);
   opacity: 0.45;
@@ -902,7 +905,7 @@ section {
 }
 
 .profile-img-ring.ring-2 {
-  inset: -50px;
+  inset: calc(var(--ring-2-offset) * -1);
   border: 1.5px dashed var(--primary);
   opacity: 0.28;
   animation: spinRing 16s linear infinite reverse;
@@ -948,8 +951,8 @@ section {
   position: absolute;
   top: 50%;
   left: 50%;
-  width: calc(var(--orbit-radius) * 2);
-  height: calc(var(--orbit-radius) * 2);
+  width: calc(var(--orbit-radius) + var(--orbit-radius));
+  height: calc(var(--orbit-radius) + var(--orbit-radius));
   margin-top: calc(var(--orbit-radius) * -1);
   margin-left: calc(var(--orbit-radius) * -1);
   border-radius: 50%;
@@ -957,12 +960,12 @@ section {
 }
 
 .orbit-1 {
-  --orbit-radius: 148px;
+  --orbit-radius: calc(var(--profile-radius) + var(--ring-1-offset));
   animation: spinRing 10s linear infinite;
 }
 
 .orbit-2 {
-  --orbit-radius: 230px;
+  --orbit-radius: calc(var(--profile-radius) + var(--ring-2-offset));
   animation: spinRing 16s linear infinite reverse;
 }
 
@@ -1056,17 +1059,8 @@ section {
 }
 
 @media (max-width: 1100px) {
-  .orbit-1 {
-    --orbit-radius: 140px;
-  }
-
-  .orbit-2 {
-    --orbit-radius: 175px;
-  }
-
   .profile-img-wrap {
-    width: 240px;
-    height: 240px;
+    --profile-radius: 120px;
   }
 
   .profile-img {
@@ -1116,9 +1110,10 @@ section {
   }
 
   .profile-img-wrap {
+    --profile-radius: clamp(80px, 23vw, 90px);
+    --ring-1-offset: 14px;
+    --ring-2-offset: 40px;
     display: flex;
-    width: clamp(160px, 46vw, 180px);
-    height: clamp(160px, 46vw, 180px);
     aspect-ratio: auto;
     margin-right: 0;
     margin-bottom: clamp(48px, 17vw, 64px);
@@ -1127,22 +1122,6 @@ section {
   .profile-img {
     width: calc(100% - 10px);
     height: calc(100% - 10px);
-  }
-
-  .profile-img-ring {
-    inset: -14px;
-  }
-
-  .profile-img-ring.ring-2 {
-    inset: -40px;
-  }
-
-  .orbit-1 {
-    --orbit-radius: min(28.5vw, 108px);
-  }
-
-  .orbit-2 {
-    --orbit-radius: min(38vw, 142px);
   }
 
   .orbit-1,
