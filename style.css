@@ -11,8 +11,10 @@
   --space-xs:  8px;
   --space-sm:  16px;
   --space-md:  24px;
-  --space-lg:  48px;
-  --space-xl:  80px;
+  --space-lg:  38px;
+  --space-xl:  60px;
+  --section-space: clamp(36px, 2.5vw, 48px);
+  --section-title-gap: clamp(24px, 2vw, 32px);
   --gutter: 80px;
   --max-w: 1200px;
 }
@@ -592,7 +594,7 @@ body.cursor-hover #cursor-dot {
    SECTIONS — shared
 ════════════════════════════════ */
 section {
-  padding: var(--space-xl) 0;
+  padding: var(--section-space) 0;
   width: 100%;
 }
 
@@ -607,7 +609,7 @@ section {
   font-family: 'Dancing Script', cursive;
   font-size: clamp(2rem, 5vw, 3rem);
   text-align: center;
-  margin-bottom: var(--space-lg);
+  margin-bottom: var(--section-title-gap);
   line-height: 1.2;
   display: block;
 }
@@ -1631,14 +1633,6 @@ section {
 }
 
 @media (max-width: 600px) {
-  section {
-    padding: 40px 0;
-  }
-
-  .section-title {
-    margin-bottom: 24px;
-  }
-
   .about-hero {
     margin-bottom: 24px;
   }
