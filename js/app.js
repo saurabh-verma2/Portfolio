@@ -517,8 +517,17 @@ function openProjectModal(index) {
   const overlay = document.getElementById('project-modal-overlay');
 
   const banner = document.getElementById('modal-banner');
-  banner.style.background = p.gradient;
-  document.getElementById('modal-icon').className = `fa ${p.icon}`;
+  const modalIcon = document.getElementById('modal-icon');
+
+  if (p.image) {
+    banner.style.background = `url("${p.image}") center / cover no-repeat`;
+    modalIcon.hidden = true;
+  } else {
+    banner.style.background = p.gradient;
+    modalIcon.className = `fa ${p.icon}`;
+    modalIcon.hidden = false;
+  }
+
   document.getElementById('modal-label-badge').textContent = p.label;
 
   document.getElementById('modal-title').textContent = p.title;
