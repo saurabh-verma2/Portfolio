@@ -250,7 +250,9 @@ function renderProjects() {
 
     card.innerHTML = `
       <div class="project-img" style="background:${p.gradient}">
-        <i class="fa ${p.icon} project-img-icon"></i>
+        ${p.image
+          ? `<img src="${p.image}" alt="${p.title} project preview" loading="lazy" decoding="async">`
+          : `<i class="fa ${p.icon} project-img-icon"></i>`}
         <span class="project-img-label">${p.label}</span>
       </div>
       <div class="project-body">
