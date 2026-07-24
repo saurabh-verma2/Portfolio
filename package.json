@@ -4,7 +4,7 @@
   "private": true,
   "type": "module",
   "scripts": {
-    "check": "node --check api/contact.js && node --check js/app.js"
+    "check": "node --check api/contact.js && node --check api/chat.js && node --check api/profile-context.js && node --check js/common/config.js && node --check js/common/assets.js && node --check js/common/colors.js && node --check js/data.js && node --check js/theme.js && node --check js/app.js && node --check js/chatbot.js"
   },
   "dependencies": {
     "nodemailer": "^7.0.0"

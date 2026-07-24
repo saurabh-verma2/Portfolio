@@ -1,5 +1,4 @@
-.env
-js/env.js
+.env*
 node_modules/
 .npm-cache/
 .vercel/
