@@ -4,7 +4,66 @@
 <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>PORTFOLIO — Saurabh Kumar Verma</title>
+    <title>Saurabh Kumar Verma | Android, Flutter & AI Developer</title>
+    <meta name="description"
+        content="Portfolio of Saurabh Kumar Verma, an Android and Flutter developer building production mobile apps, AI-powered assistants, and location-aware experiences." />
+    <meta name="author" content="Saurabh Kumar Verma" />
+    <meta name="keywords"
+        content="Saurabh Kumar Verma, Android Developer, Kotlin, Jetpack Compose, Flutter, AI Developer, Gemini API, OpenAI API, Google Places API, Mobile App Developer" />
+    <meta name="robots" content="index, follow, max-image-preview:large" />
+    <meta name="color-scheme" content="light dark" />
+    <meta name="theme-color" content="#e0e0e0" />
+    <link rel="canonical" href="/" />
+    <link rel="icon" href="/assets/favicon.svg" type="image/svg+xml" />
+
+    <meta property="og:type" content="profile" />
+    <meta property="og:title" content="Saurabh Kumar Verma | Android, Flutter & AI Developer" />
+    <meta property="og:description"
+        content="Explore production mobile apps, AI integrations, and location-aware experiences built by Saurabh Kumar Verma." />
+    <meta property="og:image" content="/assets/images/myImage.webp" />
+    <meta property="og:image:alt" content="Saurabh Kumar Verma, Android, Flutter and AI developer" />
+    <meta property="og:site_name" content="Saurabh Kumar Verma Portfolio" />
+    <meta property="profile:first_name" content="Saurabh" />
+    <meta property="profile:last_name" content="Verma" />
+
+    <meta name="twitter:card" content="summary" />
+    <meta name="twitter:title" content="Saurabh Kumar Verma | Android, Flutter & AI Developer" />
+    <meta name="twitter:description"
+        content="Production Android and Flutter apps, AI-powered assistants, and location-aware experiences." />
+    <meta name="twitter:image" content="/assets/images/myImage.webp" />
+    <meta name="twitter:image:alt" content="Saurabh Kumar Verma" />
+
+    <script type="application/ld+json">
+    {
+        "@context": "https://schema.org",
+        "@type": "Person",
+        "name": "Saurabh Kumar Verma",
+        "jobTitle": "Associate Software Developer",
+        "description": "Android and Flutter developer building AI-powered and location-aware mobile experiences.",
+        "email": "mailto:saurabhkumarverma0002@gmail.com",
+        "telephone": "+91 9569581015",
+        "address": {
+            "@type": "PostalAddress",
+            "addressLocality": "Lucknow",
+            "addressRegion": "Uttar Pradesh",
+            "addressCountry": "IN"
+        },
+        "sameAs": [
+            "https://github.com/saurabhDev02",
+            "https://www.linkedin.com/in/saurabh-kumar-verma-902062320"
+        ],
+        "knowsAbout": [
+            "Android development",
+            "Kotlin",
+            "Jetpack Compose",
+            "Flutter",
+            "Gemini API",
+            "OpenAI API",
+            "Google Places API",
+            "Location-aware mobile applications"
+        ]
+    }
+    </script>
     <link
         href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700;900&family=Dancing+Script:wght@400;500;600;700&family=Inter:wght@300;400;500;600&display=swap"
         rel="stylesheet" />
@@ -104,7 +163,11 @@
                     <span class="float-emoji" style="--x:-10px;--delay:0.3s">🎯</span>
                     <div class="profile-img-ring"></div>
                     <div class="profile-img-ring ring-2"></div>
-                    <img id="profile-image" src="/assets/images/myImage.png" alt="Saurabh Kumar Verma" class="profile-img" />
+                    <img id="profile-image" src="/assets/images/myImage.webp"
+                        srcset="/assets/images/myImage-320.webp 320w, /assets/images/myImage.webp 500w"
+                        sizes="(max-width: 600px) 180px, (max-width: 1100px) 230px, 260px"
+                        width="500" height="762" alt="Saurabh Kumar Verma" class="profile-img"
+                        decoding="async" fetchpriority="high" />
 
                     <div class="badge-orbit orbit-1">
                         <div class="orbit-badge badge-0" title="Kotlin">
@@ -280,6 +343,11 @@
                 <div class="contact-form-card fade-in">
                     <h3>Send a Message</h3>
                     <form id="contact-form" novalidate>
+                        <div class="form-honeypot" aria-hidden="true">
+                            <label for="f-website">Website</label>
+                            <input id="f-website" name="website" type="text" tabindex="-1"
+                                autocomplete="url" />
+                        </div>
                         <div class="form-group">
                             <label for="f-name">Your Name</label>
                             <input class="form-input" id="f-name" type="text" placeholder="Saurabh Kumar Verma" required />
@@ -449,10 +517,12 @@
     </section>
 
     <!-- Project Modal -->
-    <div id="project-modal-overlay" onclick="closeProjectModal()">
-        <div id="project-modal" onclick="event.stopPropagation()">
-            <button id="modal-close" onclick="closeProjectModal()">
-                <i class="fa fa-times"></i>
+    <div id="project-modal-overlay" aria-hidden="true" onclick="closeProjectModal()">
+        <div id="project-modal" role="dialog" aria-modal="true" aria-labelledby="modal-title"
+            aria-describedby="modal-details" tabindex="-1" onclick="event.stopPropagation()">
+            <button id="modal-close" type="button" aria-label="Close project details"
+                onclick="closeProjectModal()">
+                <i class="fa fa-times" aria-hidden="true"></i>
             </button>
 
             <div id="modal-banner">
@@ -463,8 +533,8 @@
             <div id="modal-body">
                 <div id="modal-header">
                     <h2 id="modal-title"></h2>
-                    <a id="modal-github" href="#" target="_blank">
-                        <i class="fab fa-github"></i> View on GitHub
+                    <a id="modal-github" href="#" target="_blank" rel="noopener noreferrer">
+                        <i class="fab fa-github" aria-hidden="true"></i> View on GitHub
                     </a>
                 </div>
 

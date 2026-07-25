@@ -2328,6 +2328,12 @@ section {
 }
 
 .view-details-hint {
+  padding: 0;
+  border: 0;
+  background: transparent;
+  color: inherit;
+  font: inherit;
+  cursor: pointer;
   display: flex;
   align-items: center;
   gap: 5px;
@@ -2338,7 +2344,7 @@ section {
   opacity: 0;
   transform: translateX(4px);
   transition: opacity 0.2s ease, transform 0.2s ease, color 0.2s ease;
-  pointer-events: none;
+  pointer-events: auto;
   white-space: nowrap;
 }
 
@@ -2790,6 +2796,15 @@ section {
   margin-bottom: 16px;
 }
 
+.form-honeypot {
+  position: absolute !important;
+  left: -10000px !important;
+  width: 1px !important;
+  height: 1px !important;
+  overflow: hidden !important;
+  pointer-events: none !important;
+}
+
 .form-group label {
   display: block;
   font-size: 0.82rem;
@@ -2970,6 +2985,14 @@ textarea.form-input {
 }
 
 .footer-logo span {
+  color: var(--accent);
+}
+
+.view-details-hint:focus-visible {
+  outline: 2px solid var(--accent);
+  outline-offset: 3px;
+  opacity: 1;
+  transform: translateX(0);
   color: var(--accent);
 }
 

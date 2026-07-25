@@ -264,22 +264,29 @@ function renderProjects() {
         <div class="project-title-row">
           <div class="project-title">${p.title}</div>
           <a class="project-github" href="${p.github}"
-             target="_blank" title="GitHub"
+             target="_blank" rel="noopener noreferrer" title="GitHub"
+             aria-label="View ${p.title} on GitHub"
              onclick="event.stopPropagation()">
-            <i class="fab fa-github"></i>
+            <i class="fab fa-github" aria-hidden="true"></i>
           </a>
         </div>
         <p class="project-desc">${p.desc}</p>
         <div class="tech-row">
           ${techHTML}
-          <span class="view-details-hint">
+          <button class="view-details-hint" type="button" aria-haspopup="dialog"
+            aria-label="View details for ${p.title}">
             <i class="fa fa-expand-alt"></i> View details
-          </span>
+          </button>
         </div>
       </div>
     `;
 
-    card.addEventListener('click', () => openProjectModal(index));
+    const detailsButton = card.querySelector('.view-details-hint');
+    card.addEventListener('click', () => openProjectModal(index, detailsButton));
+    detailsButton.addEventListener('click', event => {
+      event.stopPropagation();
+      openProjectModal(index, detailsButton);
+    });
 
     grid.appendChild(card);
   });
@@ -361,6 +368,7 @@ function renderExperience() {
 function initContactForm() {
   const form = document.getElementById('contact-form');
   if (!form) return;
+  form.dataset.startedAt = String(Date.now());
 
   form.addEventListener('submit', async e => {
     e.preventDefault();
@@ -380,28 +388,37 @@ function initContactForm() {
 
     const btn = document.getElementById('send-btn');
     btn.classList.add('loading');
+    btn.disabled = true;
+    const controller = new AbortController();
+    const requestTimeout = window.setTimeout(() => controller.abort(), 15_000);
 
     try {
       const res = await fetch('/api/contact', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
+        signal: controller.signal,
         body: JSON.stringify({
           name,
           email,
           message: msg,
+          website: document.getElementById('f-website')?.value || '',
+          startedAt: Number(form.dataset.startedAt),
         }),
       });
 
       if (res.ok) {
         showToast('Message sent successfully! 🎉', 'success');
         form.reset();
+        form.dataset.startedAt = String(Date.now());
       } else {
         throw new Error('Server error ' + res.status);
       }
     } catch (err) {
       showToast('Failed to send. Please email me directly.', 'error');
     } finally {
+      window.clearTimeout(requestTimeout);
       btn.classList.remove('loading');
+      btn.disabled = false;
     }
   });
 }
@@ -520,9 +537,23 @@ function initCursor() {
 }
 
 //  PROJECT MODAL
-function openProjectModal(index) {
+let _projectModalTrigger = null;
+
+function getProjectModalFocusableElements() {
+  const modal = document.getElementById('project-modal');
+  if (!modal) return [];
+
+  return [...modal.querySelectorAll(
+    'a[href], button:not([disabled]), [tabindex]:not([tabindex="-1"])',
+  )].filter(element => !element.hidden && element.getAttribute('aria-hidden') !== 'true');
+}
+
+function openProjectModal(index, trigger = document.activeElement) {
   const p = PROJECTS[index];
   const overlay = document.getElementById('project-modal-overlay');
+  if (!p || !overlay) return;
+
+  _projectModalTrigger = trigger instanceof HTMLElement ? trigger : null;
 
   const banner = document.getElementById('modal-banner');
   const modalIcon = document.getElementById('modal-icon');
@@ -541,6 +572,7 @@ function openProjectModal(index) {
   document.getElementById('modal-title').textContent = p.title;
   const ghLink = document.getElementById('modal-github');
   ghLink.href = p.github;
+  ghLink.setAttribute('aria-label', `View ${p.title} on GitHub`);
 
   document.getElementById('modal-details').textContent = p.details;
 
@@ -559,18 +591,52 @@ function openProjectModal(index) {
     `).join('');
 
   overlay.classList.add('open');
+  overlay.setAttribute('aria-hidden', 'false');
   document.body.style.overflow = 'hidden';
 
   document.getElementById('project-modal').scrollTop = 0;
+  window.requestAnimationFrame(() => document.getElementById('modal-close')?.focus());
 }
 
 function closeProjectModal() {
-  document.getElementById('project-modal-overlay').classList.remove('open');
+  const overlay = document.getElementById('project-modal-overlay');
+  if (!overlay?.classList.contains('open')) return;
+
+  overlay.classList.remove('open');
+  overlay.setAttribute('aria-hidden', 'true');
   document.body.style.overflow = '';
+  _projectModalTrigger?.focus();
+  _projectModalTrigger = null;
 }
 
 document.addEventListener('keydown', e => {
-  if (e.key === 'Escape') closeProjectModal();
+  const overlay = document.getElementById('project-modal-overlay');
+  if (!overlay?.classList.contains('open')) return;
+
+  if (e.key === 'Escape') {
+    e.preventDefault();
+    closeProjectModal();
+    return;
+  }
+
+  if (e.key !== 'Tab') return;
+
+  const focusable = getProjectModalFocusableElements();
+  if (focusable.length === 0) {
+    e.preventDefault();
+    document.getElementById('project-modal')?.focus();
+    return;
+  }
+
+  const first = focusable[0];
+  const last = focusable[focusable.length - 1];
+  if (e.shiftKey && (document.activeElement === first || !overlay.contains(document.activeElement))) {
+    e.preventDefault();
+    last.focus();
+  } else if (!e.shiftKey && document.activeElement === last) {
+    e.preventDefault();
+    first.focus();
+  }
 });
 
 //  STATS COUNTER
