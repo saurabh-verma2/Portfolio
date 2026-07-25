@@ -108,6 +108,148 @@ const Chatbot = (() => {
     return message;
   }
 
+  function getProjectAction(question) {
+    if (typeof PROJECTS === 'undefined') return null;
+
+    const matchers = [
+      { pattern: /\bmeinstein\b|personal assistant/i, title: 'mEinstein' },
+      { pattern: /\btrashdetective\b|waste classifier|waste detection/i, title: 'TrashDetective' },
+      { pattern: /job board|freelance marketplace/i, title: 'Job Board' },
+      { pattern: /go to kisan|smart agri|agricultural marketplace/i, title: 'Go To Kisan' },
+    ];
+    const match = matchers.find(item => item.pattern.test(question));
+    if (!match) return null;
+
+    const projectIndex = PROJECTS.findIndex(project => project.title.includes(match.title));
+    return projectIndex >= 0
+      ? { key: `project-${projectIndex}`, label: 'View this project', icon: 'fa-expand-alt', projectIndex }
+      : null;
+  }
+
+  function getResponseActions(question, response) {
+    const query = question.toLowerCase();
+    const combined = `${question}\n${response}`.toLowerCase();
+    const actions = [];
+    const keys = new Set();
+    const add = action => {
+      if (!action || keys.has(action.key) || actions.length >= 3) return;
+      keys.add(action.key);
+      actions.push(action);
+    };
+
+    const projectAction = getProjectAction(question);
+    add(projectAction);
+
+    if (!projectAction && /\bprojects?\b|portfolio work|what (?:has|did) saurabh build/.test(query)) {
+      add({ key: 'projects', label: 'View projects', icon: 'fa-briefcase', section: 'projects' });
+    }
+
+    if (
+      /\bai\b|artificial intelligence|gemini|openai|tensorflow|language model|chatbot/.test(combined)
+    ) {
+      add({
+        key: 'ai-skills',
+        label: 'Open AI skills',
+        icon: 'fa-brain',
+        skillCategory: 'AI & Intelligent APIs',
+      });
+    }
+
+    if (/google places|movement sdk|location-aware|location intelligence|nearby discovery/.test(combined)) {
+      add({
+        key: 'location-skills',
+        label: 'Open location skills',
+        icon: 'fa-location-dot',
+        skillCategory: 'Location Intelligence',
+      });
+    }
+
+    if (/\bexperience\b|work history|current role|current job|iph technologies|education/.test(query)) {
+      add({
+        key: 'experience',
+        label: /education/.test(query) ? 'View education' : 'Go to experience',
+        icon: 'fa-graduation-cap',
+        section: 'experience',
+      });
+    }
+
+    if (/\bcontact\b|\bhire\b|availability|available|email|phone|reach saurabh/.test(combined)) {
+      add({
+        key: 'contact',
+        label: 'Contact Saurabh',
+        icon: 'fa-paper-plane',
+        section: 'contact',
+      });
+    }
+
+    return actions;
+  }
+
+  function closeThenRun(elements, callback) {
+    setOpen(elements.panel, elements.launcher, false);
+    const reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+    window.setTimeout(callback, reduceMotion ? 0 : 280);
+  }
+
+  function activateSkillCategory(categoryName) {
+    const tabs = [...document.querySelectorAll('.skill-tab')];
+    const matchingTabs = tabs.filter(tab => tab.textContent.trim().includes(categoryName));
+    const target = matchingTabs.find(tab => tab.offsetParent !== null) || matchingTabs[0];
+    target?.click();
+    if (typeof scrollToSection === 'function') scrollToSection('skills');
+  }
+
+  function runResponseAction(action, elements) {
+    closeThenRun(elements, () => {
+      if (Number.isInteger(action.projectIndex) && typeof openProjectModal === 'function') {
+        const trigger = document.querySelectorAll('#projects-grid .view-details-hint')[action.projectIndex];
+        openProjectModal(action.projectIndex, trigger);
+        return;
+      }
+
+      if (action.skillCategory) {
+        activateSkillCategory(action.skillCategory);
+        return;
+      }
+
+      if (action.section && typeof scrollToSection === 'function') {
+        scrollToSection(action.section);
+      }
+    });
+  }
+
+  function addResponseActions(container, question, response, elements) {
+    const actions = getResponseActions(question, response);
+    if (actions.length === 0) return;
+
+    const actionGroup = document.createElement('div');
+    actionGroup.className = 'chat-response-actions';
+    actionGroup.setAttribute('role', 'group');
+    actionGroup.setAttribute('aria-label', 'Suggested portfolio actions');
+
+    actions.forEach(action => {
+      const button = document.createElement('button');
+      button.className = 'chat-response-action';
+      button.type = 'button';
+
+      const icon = document.createElement('i');
+      icon.className = `fa ${action.icon}`;
+      icon.setAttribute('aria-hidden', 'true');
+
+      const label = document.createElement('span');
+      label.textContent = action.label;
+
+      button.append(icon, label);
+      button.addEventListener('click', () => runResponseAction(action, elements));
+      actionGroup.appendChild(button);
+    });
+
+    container.appendChild(actionGroup);
+    window.requestAnimationFrame(() => {
+      container.scrollTop = container.scrollHeight;
+    });
+  }
+
   function setOpen(panel, launcher, open) {
     panel.classList.toggle('open', open);
     panel.classList.toggle('closing', !open);
@@ -183,13 +325,15 @@ const Chatbot = (() => {
       if (history.length > MAX_HISTORY_MESSAGES) {
         history.splice(0, history.length - MAX_HISTORY_MESSAGES);
       }
+      addResponseActions(elements.messages, cleanText, streamed.text, elements);
     } catch (error) {
       typing.remove();
-      addMessage(
+      const errorMessage = addMessage(
         elements.messages,
         error.message || 'I am unavailable right now. Please try again later.',
         'bot error',
       );
+      addResponseActions(elements.messages, cleanText, errorMessage.textContent, elements);
       history.pop();
     } finally {
       isSending = false;
@@ -212,7 +356,7 @@ const Chatbot = (() => {
 
     if (!launcher || !panel || !form || !input || !messages) return;
 
-    const elements = { form, input, send, messages, suggestions };
+    const elements = { panel, launcher, form, input, send, messages, suggestions };
     launcher.addEventListener('click', () => {
       setOpen(panel, launcher, !panel.classList.contains('open'));
     });
