@@ -517,9 +517,10 @@ ol.chat-message-list {
   }
 
   .chatbot-panel {
+    left: 12px;
     right: 12px;
     bottom: 84px;
-    width: calc(100vw - 24px);
+    width: auto;
     height: min(540px, calc(100vh - 104px));
   }
 }

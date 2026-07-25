@@ -75,8 +75,8 @@
                     <div class="typewriter-wrap"><span id="typewriter"></span><span class="cursor"></span></div>
                     <p class="about-desc">
                         I build <strong>native Android apps</strong> with Kotlin & Jetpack Compose,
-                        and cross-platform experiences with Flutter — turning ideas into fast,
-                        reliable products that people actually enjoy using.
+                        cross-platform experiences with Flutter, and AI-powered, location-aware
+                        features that turn real-world ideas into useful and reliable products.
                     </p>
                     <div class="about-hero-btns">
                         <button class="btn-primary" onclick="scrollToSection('contact')">
@@ -308,12 +308,74 @@
     </section>
 
     <!-- ═══════════ FOOTER ═══════════ -->
-    <footer>
-        Copyright © | Designed and developed with ❤️ by <strong>Saurabh Kumar Verma</strong>
+    <footer class="site-footer">
+        <div class="footer-shell">
+            <div class="footer-main">
+                <div class="footer-brand">
+                    <button class="footer-logo" type="button" onclick="scrollToSection('about')"
+                        aria-label="Go to the About section">
+                        PORT<span>FOLIO</span>
+                    </button>
+                    <p>
+                        Building reliable mobile experiences with Android, Flutter, intelligent APIs,
+                        and location-aware technology.
+                    </p>
+                    <div class="footer-availability" aria-label="Currently open to impactful opportunities">
+                        <span class="footer-availability-signal" aria-hidden="true">
+                            <span></span>
+                        </span>
+                        <span class="footer-availability-copy">
+                            <small>Currently open to</small>
+                            <strong>Impactful opportunities</strong>
+                        </span>
+                        <i class="fa fa-wand-magic-sparkles" aria-hidden="true"></i>
+                    </div>
+                </div>
+
+                <nav class="footer-nav" aria-label="Footer navigation">
+                    <h2>Explore</h2>
+                    <button type="button" onclick="scrollToSection('about')">About</button>
+                    <button type="button" onclick="scrollToSection('skills')">Skills</button>
+                    <button type="button" onclick="scrollToSection('projects')">Projects</button>
+                    <button type="button" onclick="scrollToSection('experience')">Experience</button>
+                </nav>
+
+                <div class="footer-connect">
+                    <h2>Let's build something useful</h2>
+                    <p>Have a mobile, AI, or location-aware product in mind?</p>
+                    <button class="footer-contact-btn" type="button" onclick="scrollToSection('contact')">
+                        <i class="fa fa-paper-plane" aria-hidden="true"></i>
+                        Start a conversation
+                    </button>
+                    <div class="footer-socials" aria-label="Social links">
+                        <a href="https://github.com/saurabhDev02" target="_blank" rel="noopener noreferrer"
+                            aria-label="GitHub" title="GitHub"><i class="fab fa-github"></i></a>
+                        <a href="https://www.linkedin.com/in/saurabh-kumar-verma-902062320" target="_blank"
+                            rel="noopener noreferrer" aria-label="LinkedIn" title="LinkedIn">
+                            <i class="fab fa-linkedin-in"></i>
+                        </a>
+                        <a href="https://wa.me/919569581015" target="_blank" rel="noopener noreferrer"
+                            aria-label="WhatsApp" title="WhatsApp"><i class="fab fa-whatsapp"></i></a>
+                        <a href="mailto:saurabhkumarverma0002@gmail.com" aria-label="Email" title="Email">
+                            <i class="fa fa-envelope"></i>
+                        </a>
+                    </div>
+                </div>
+            </div>
+
+            <div class="footer-bottom">
+                <p>© <span id="footer-year">2026</span> Saurabh Kumar Verma. Built with care and curiosity.</p>
+                <button type="button" onclick="scrollToSection('about')" aria-label="Return to the About section">
+                    Back to beginning <i class="fa fa-arrow-up" aria-hidden="true"></i>
+                </button>
+            </div>
+        </div>
     </footer>
 
     <!-- Scroll to top -->
-    <button id="scroll-top" title="Back to top"><i class="fa fa-arrow-up"></i></button>
+    <button id="scroll-top" type="button" title="Back to top" aria-label="Back to top">
+        <i class="fa fa-arrow-up" aria-hidden="true"></i>
+    </button>
 
     <!-- Toast -->
     <div class="toast" id="toast"></div>
@@ -349,7 +411,8 @@
 
         <div id="chatbot-messages" class="chatbot-messages" aria-live="polite">
             <div class="chat-message bot">
-                Hi! I can answer questions about Saurabh's skills, experience, education, and projects.
+                Hi! I can answer questions about Saurabh's skills, AI integrations, experience,
+                education, and projects.
             </div>
         </div>
 
@@ -362,6 +425,10 @@
             </button>
             <button class="chat-suggestion" type="button" data-question="What is Saurabh's work experience?">
                 Experience
+            </button>
+            <button class="chat-suggestion" type="button"
+                data-question="What AI and location-aware integrations has Saurabh built?">
+                AI integrations
             </button>
         </div>
 

@@ -10,14 +10,18 @@ LinkedIn: https://www.linkedin.com/in/saurabh-kumar-verma-902062320
 Professional summary:
 Saurabh is an Android and Flutter developer who builds native Android applications with Kotlin
 and Jetpack Compose and cross-platform applications with Flutter. He focuses on clean UI,
-maintainable architecture, API integration, performance, and practical AI-powered applications.
+maintainable architecture, API integration, performance, practical AI-powered applications,
+and location-aware mobile experiences.
 
 Primary skills:
 - Android: Kotlin, Jetpack Compose, Android SDK, Java
 - Cross-platform: Flutter, Dart, Riverpod
 - Backend and data: Firebase, REST APIs, Retrofit2, OkHttp, Room Database
 - Architecture: MVVM, Clean Architecture, Repository Pattern, Hilt dependency injection
-- AI/ML: TensorFlow Lite and Gemini API integration
+- AI and intelligent APIs: OpenAI API, Gemini API, TensorFlow Lite, context engineering,
+  context-grounded assistants, streamed responses, and conversation history management
+- Location intelligence: Google Places API, Movement SDK, Android location services,
+  nearby discovery, and location-aware recommendations
 - Tools: Git, GitHub, Android Studio, VS Code, Postman
 - Deployment: Google Play Console, AAB, App Signing, product flavors, build variants, and keystore management
 
@@ -44,11 +48,24 @@ Projects:
    cropping, and responsive mobile/web layouts.
    Repository: https://github.com/saurabh-verma2/Go-To-Kisan-Smart-Agricultural-Marketplace
 
+5. Context-Grounded Portfolio AI Assistant
+   A live Gemini-powered assistant built into this portfolio. It uses controlled profile context
+   to answer questions about Saurabh's skills, projects, education, and experience. The implementation
+   includes a protected server-side API, streamed responses, bounded conversation history, rate limiting,
+   input validation, and prompt-injection safeguards.
+
+6. AI-Powered Local Discovery
+   Mobile features integrating OpenAI and Gemini APIs with Google Places API and Movement SDK.
+   They use the user's current location and application context to discover nearby events, malls,
+   colleges, and other relevant places and provide context-aware responses and recommendations.
+   The implementation handles location permissions, loading states, empty results, and API errors.
+
 Experience:
 - Associate Software Developer, IPH Technologies, September 2025 to present:
   Develops Android apps with Kotlin and Jetpack Compose and Flutter apps; builds mEinstein;
   manages Play Store releases; integrates REST APIs using Retrofit2/OkHttp and Coroutines/Flow;
-  improves performance, responsiveness, and error handling.
+  integrates OpenAI and Gemini APIs for context-grounded responses; builds location-aware discovery
+  with Google Places API and Movement SDK; and improves performance, responsiveness, and error handling.
 - Software Engineer Trainee, IPH Technologies, February 2025 to August 2025:
   Developed Android and Flutter features, integrated REST APIs, handled JSON and application state,
   debugged and tested applications, and used Git-based team workflows.
@@ -63,4 +80,3 @@ Working principles:
 Quality over quantity, user experience first, continuous improvement, maintainable code,
 solving real-world problems, and continuous learning.
 `.trim();
-

@@ -14,6 +14,8 @@ const TAGLINES = [
   "I create clean & modern UI",
   "I love solving real-world problems",
   "I'm an AI-powered app developer",
+  "I build context-aware AI assistants",
+  "I create location-aware mobile experiences",
 ];
 
 const ABOUT_TAGS = [
@@ -26,6 +28,11 @@ const ABOUT_TAGS = [
   'Dart',
   'Cross-Platform Apps',
   'REST API Integration',
+  'OpenAI API',
+  'Gemini API',
+  'Context Engineering',
+  'Google Places API',
+  'Movement SDK',
   'Firebase',
   'Room Database',
   'Google Play Deployment',
@@ -56,6 +63,8 @@ const INFO_CARDS = [
       'MVVM, Clean, and maintainable code architecture',
       'Attention to UI/UX details',
       'Seamless API & third-party integration',
+      'Context-grounded AI assistant integration',
+      'Location-aware discovery and movement experiences',
       'Robust state management',
       'Performance optimization',
       'Cross-platform development with Flutter',
@@ -153,12 +162,25 @@ const SKILL_CATEGORIES = [
     ]
   },
   {
-    name: "AI / ML",
+    name: "AI & Intelligent APIs",
     icon: "fa-brain",
     color: "#6a1b9a",
     skills: [
       { name: "TensorFlow Lite", icon: "fa fa-brain", color: "#ef6c00", level: 75 },
-      { name: "Gemini API", icon: "fa fa-robot", color: "#1e88e5", level: 82 },
+      { name: "Gemini API", icon: "fa fa-robot", color: "#1e88e5", level: 85 },
+      { name: "OpenAI API", icon: "fa fa-wand-magic-sparkles", color: "#00897b", level: 82 },
+      { name: "Context Engineering", icon: "fa fa-layer-group", color: "#7b1fa2", level: 82 },
+    ]
+  },
+  {
+    name: "Location Intelligence",
+    icon: "fa-location-dot",
+    color: "#00838f",
+    skills: [
+      { name: "Google Places API", icon: "fa fa-map-location-dot", color: "#1a73e8", level: 82 },
+      { name: "Movement SDK", icon: "fa fa-person-walking", color: "#00897b", level: 80 },
+      { name: "Location Services", icon: "fa fa-location-crosshairs", color: "#c62828", level: 85 },
+      { name: "Nearby Discovery", icon: "fa fa-compass", color: "#f57c00", level: 82 },
     ]
   },
   {
@@ -282,6 +304,8 @@ const EXPERIENCES = [
     points: [
       "Developing native Android applications using Kotlin & Jetpack Compose, alongside Flutter cross-platform apps.",
       "Building mEinstein, an AI-powered assistant app live on Google Play Store, with MVVM, Room, and Retrofit.",
+      "Integrating OpenAI and Gemini APIs to deliver context-grounded responses from profile and application data.",
+      "Building location-aware discovery with Google Places API and Movement SDK for nearby events, malls, colleges, and other relevant places.",
       "Owning the full Google Play release lifecycle: keystore, App Signing, AAB, and staged rollouts.",
       "Integrating REST APIs with Retrofit2/OkHttp and Coroutines & Flow for reactive networking.",
       "Improving application performance and UI responsiveness through structured error handling."
