@@ -51,9 +51,14 @@ function updateActiveNav() {
 
 function initScrollTop() {
   const btn = document.getElementById('scroll-top');
-  window.addEventListener('scroll', () => {
+  if (!btn) return;
+
+  const syncVisibility = () => {
     btn.classList.toggle('visible', window.scrollY > 400);
-  }, { passive: true });
+  };
+
+  window.addEventListener('scroll', syncVisibility, { passive: true });
+  syncVisibility();
   btn.addEventListener('click', () => window.scrollTo({ top: 0, behavior: 'smooth' }));
 }
 

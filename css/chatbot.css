@@ -16,7 +16,7 @@
   isolation: isolate;
   animation: chatbotFloat 3.2s ease-in-out infinite;
   transition:
-    transform 0.35s cubic-bezier(0.34, 1.56, 0.64, 1),
+    transform 0.55s cubic-bezier(0.22, 1, 0.36, 1),
     box-shadow var(--transition);
 }
 
@@ -42,19 +42,38 @@
   animation-play-state: paused;
 }
 
-.chatbot-launcher i {
+.chatbot-launcher-icon {
+  position: absolute;
   font-size: 1.35rem;
   filter: drop-shadow(0 2px 3px var(--chat-border));
-  transition: transform 0.3s ease;
+  transition:
+    opacity 0.38s ease,
+    transform 0.55s cubic-bezier(0.22, 1, 0.36, 1);
 }
 
-.chatbot-launcher:hover i {
-  transform: scale(1.08);
+.chatbot-launcher-icon--chat {
+  opacity: 1;
+  transform: rotate(0deg) scale(1);
+}
+
+.chatbot-launcher-icon--close {
+  opacity: 0;
+  transform: rotate(-90deg) scale(0.72);
 }
 
 .chatbot-is-open .chatbot-launcher {
   animation: none;
   transform: rotate(90deg);
+}
+
+.chatbot-is-open .chatbot-launcher-icon--chat {
+  opacity: 0;
+  transform: rotate(90deg) scale(0.72);
+}
+
+.chatbot-is-open .chatbot-launcher-icon--close {
+  opacity: 1;
+  transform: rotate(0deg) scale(1);
 }
 
 .chatbot-panel {
@@ -78,15 +97,16 @@
   transform: translateY(24px) scale(0.92);
   transform-origin: bottom right;
   transition:
-    opacity 0.28s ease,
-    visibility 0.28s ease,
-    transform 0.42s cubic-bezier(0.34, 1.56, 0.64, 1);
+    opacity 0.36s ease,
+    visibility 0s linear 0.55s,
+    transform 0.55s cubic-bezier(0.22, 1, 0.36, 1);
 }
 
 .chatbot-panel.open {
   opacity: 1;
   visibility: visible;
   transform: translateY(0) scale(1);
+  transition-delay: 0s;
 }
 
 .chatbot-header {
@@ -168,13 +188,33 @@
   color: var(--text);
   box-shadow: var(--shadow-nm);
   cursor: pointer;
-  transition: background var(--transition), transform var(--transition);
+  opacity: 0;
+  transform: rotate(-90deg) scale(0.75);
+  transition:
+    background var(--transition),
+    color var(--transition),
+    box-shadow var(--transition),
+    opacity 0.45s ease,
+    transform 0.7s cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+.chatbot-panel.open .chatbot-close {
+  opacity: 1;
+  transform: rotate(0deg) scale(1);
+  transition-delay: 0s, 0s, 0s, 0.12s, 0.12s;
+}
+
+.chatbot-panel.closing .chatbot-close {
+  opacity: 0;
+  transform: rotate(90deg) scale(0.75);
+  transition-delay: 0s;
 }
 
 .chatbot-close:hover {
   color: var(--accent);
   box-shadow: var(--shadow-nm), 0 0 10px var(--hover-glow);
   transform: rotate(90deg);
+  transition-delay: 0s;
 }
 
 .chatbot-messages {
@@ -476,11 +516,6 @@ ol.chat-message-list {
     bottom: 20px;
   }
 
-  #scroll-top {
-    right: 82px;
-    bottom: 22px;
-  }
-
   .chatbot-panel {
     right: 12px;
     bottom: 84px;
@@ -503,6 +538,12 @@ ol.chat-message-list {
   }
 
   .chatbot-panel {
+    transition-duration: 0.01ms;
+  }
+
+  .chatbot-launcher,
+  .chatbot-launcher-icon,
+  .chatbot-close {
     transition-duration: 0.01ms;
   }
 }

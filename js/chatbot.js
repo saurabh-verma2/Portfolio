@@ -110,9 +110,10 @@ const Chatbot = (() => {
 
   function setOpen(panel, launcher, open) {
     panel.classList.toggle('open', open);
+    panel.classList.toggle('closing', !open);
     panel.setAttribute('aria-hidden', String(!open));
     launcher.setAttribute('aria-expanded', String(open));
-    launcher.querySelector('i').className = open ? 'fa fa-times' : 'fa fa-comments';
+    launcher.setAttribute('aria-label', open ? 'Close portfolio assistant' : 'Open portfolio assistant');
     document.body.classList.toggle('chatbot-is-open', open);
 
     if (open) {
