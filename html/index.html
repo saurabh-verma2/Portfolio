@@ -484,19 +484,23 @@
             </div>
         </div>
 
-        <div id="chatbot-suggestions" class="chatbot-suggestions">
+        <div id="chatbot-suggestions" class="chatbot-suggestions" aria-label="Suggested questions">
             <button class="chat-suggestion" type="button" data-question="What are Saurabh's main skills?">
-                Main skills
+                <i class="fa fa-code" aria-hidden="true"></i>
+                <span>Main skills</span>
             </button>
             <button class="chat-suggestion" type="button" data-question="Tell me about Saurabh's projects.">
-                Projects
+                <i class="fa fa-briefcase" aria-hidden="true"></i>
+                <span>Projects</span>
             </button>
             <button class="chat-suggestion" type="button" data-question="What is Saurabh's work experience?">
-                Experience
+                <i class="fa fa-timeline" aria-hidden="true"></i>
+                <span>Experience</span>
             </button>
             <button class="chat-suggestion" type="button"
                 data-question="What AI and location-aware integrations has Saurabh built?">
-                AI integrations
+                <i class="fa fa-robot" aria-hidden="true"></i>
+                <span>AI integrations</span>
             </button>
         </div>
 
@@ -506,7 +510,7 @@
                 class="chatbot-input"
                 rows="1"
                 maxlength="500"
-                placeholder="Ask something about Saurabh..."
+                placeholder="Ask about Saurabh..."
                 aria-label="Chat message"
                 required></textarea>
             <button id="chatbot-send" class="chatbot-send" type="submit" aria-label="Send message">

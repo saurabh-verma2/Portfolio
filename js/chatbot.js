@@ -250,20 +250,34 @@ const Chatbot = (() => {
     });
   }
 
+  function isCompactChat() {
+    return window.matchMedia('(max-width: 600px)').matches;
+  }
+
   function setOpen(panel, launcher, open) {
     panel.classList.toggle('open', open);
     panel.classList.toggle('closing', !open);
     panel.setAttribute('aria-hidden', String(!open));
+    if (open && isCompactChat()) {
+      panel.setAttribute('aria-modal', 'true');
+    } else {
+      panel.removeAttribute('aria-modal');
+    }
     launcher.setAttribute('aria-expanded', String(open));
     launcher.setAttribute('aria-label', open ? 'Close portfolio assistant' : 'Open portfolio assistant');
     document.body.classList.toggle('chatbot-is-open', open);
 
     if (open) {
-      window.setTimeout(() => document.getElementById('chatbot-input')?.focus(), 220);
+      const focusTarget = isCompactChat()
+        ? document.getElementById('chatbot-close')
+        : document.getElementById('chatbot-input');
+      window.setTimeout(() => focusTarget?.focus(), 220);
+    } else if (panel.contains(document.activeElement)) {
+      window.setTimeout(() => launcher.focus(), 220);
     }
   }
 
-  async function sendMessage(text, elements) {
+  async function sendMessage(text, elements, { focusInputAfter = false } = {}) {
     if (isSending) return;
 
     const cleanText = text.trim();
@@ -272,6 +286,7 @@ const Chatbot = (() => {
     isSending = true;
     elements.input.value = '';
     elements.input.style.height = '';
+    elements.input.style.overflowY = 'hidden';
     elements.input.disabled = true;
     elements.send.disabled = true;
     elements.form.classList.add('sending');
@@ -340,7 +355,9 @@ const Chatbot = (() => {
       elements.input.disabled = false;
       elements.send.disabled = false;
       elements.form.classList.remove('sending');
-      elements.input.focus();
+      if (focusInputAfter && elements.panel.classList.contains('open')) {
+        elements.input.focus();
+      }
     }
   }
 
@@ -364,7 +381,7 @@ const Chatbot = (() => {
 
     form.addEventListener('submit', event => {
       event.preventDefault();
-      sendMessage(input.value, elements);
+      sendMessage(input.value, elements, { focusInputAfter: true });
     });
 
     input.addEventListener('keydown', event => {
@@ -376,7 +393,9 @@ const Chatbot = (() => {
 
     input.addEventListener('input', () => {
       input.style.height = 'auto';
-      input.style.height = `${Math.min(input.scrollHeight, 100)}px`;
+      const nextHeight = Math.min(input.scrollHeight, 100);
+      input.style.height = `${nextHeight}px`;
+      input.style.overflowY = input.scrollHeight > 100 ? 'auto' : 'hidden';
     });
 
     suggestions.querySelectorAll('[data-question]').forEach(button => {
@@ -388,6 +407,27 @@ const Chatbot = (() => {
     document.addEventListener('keydown', event => {
       if (event.key === 'Escape' && panel.classList.contains('open')) {
         setOpen(panel, launcher, false);
+        return;
+      }
+
+      if (event.key === 'Tab' && panel.classList.contains('open') && isCompactChat()) {
+        const focusable = Array.from(
+          panel.querySelectorAll(
+            'button:not(:disabled), textarea:not(:disabled), [href], [tabindex]:not([tabindex="-1"])',
+          ),
+        ).filter(element => !element.hidden && element.getClientRects().length > 0);
+
+        if (focusable.length === 0) return;
+        const first = focusable[0];
+        const last = focusable[focusable.length - 1];
+
+        if (event.shiftKey && document.activeElement === first) {
+          event.preventDefault();
+          last.focus();
+        } else if (!event.shiftKey && document.activeElement === last) {
+          event.preventDefault();
+          first.focus();
+        }
       }
     });
   }
